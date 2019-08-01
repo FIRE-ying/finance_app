@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.mapper.BorrowMapper">
+  <resultMap id="BaseResultMap" type="com.qf.pojo.Borrow">
+    <id column="bid" jdbcType="INTEGER" property="bid" />
+    <result column="uid" jdbcType="INTEGER" property="uid" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="pay_number" jdbcType="INTEGER" property="payNumber" />
+    <result column="totle_number" jdbcType="INTEGER" property="totleNumber" />
+    <result column="bdate" jdbcType="DATE" property="bdate" />
+    <result column="jname" jdbcType="VARCHAR" property="jname" />
+    <result column="jsex" jdbcType="VARCHAR" property="jsex" />
+    <result column="jdate" jdbcType="DATE" property="jdate" />
+    <result column="jcard" jdbcType="VARCHAR" property="jcard" />
+    <result column="profession" jdbcType="VARCHAR" property="profession" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="bmoney" jdbcType="DOUBLE" property="bmoney" />
+    <result column="credit_card" jdbcType="VARCHAR" property="creditCard" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="app_time" jdbcType="DATE" property="appTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    bid, uid, pid, pay_number, totle_number, bdate, jname, jsex, jdate, jcard, profession, 
+    address, bmoney, credit_card, status, app_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from borrow
+    where bid = #{bid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from borrow
+    where bid = #{bid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qf.pojo.Borrow">
+    insert into borrow (bid, uid, pid, 
+      pay_number, totle_number, bdate, 
+      jname, jsex, jdate, jcard, 
+      profession, address, bmoney, 
+      credit_card, status, app_time
+      )
+    values (#{bid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, 
+      #{payNumber,jdbcType=INTEGER}, #{totleNumber,jdbcType=INTEGER}, #{bdate,jdbcType=DATE}, 
+      #{jname,jdbcType=VARCHAR}, #{jsex,jdbcType=VARCHAR}, #{jdate,jdbcType=DATE}, #{jcard,jdbcType=VARCHAR}, 
+      #{profession,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{bmoney,jdbcType=DOUBLE}, 
+      #{creditCard,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{appTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qf.pojo.Borrow">
+    insert into borrow
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bid != null">
+        bid,
+      </if>
+      <if test="uid != null">
+        uid,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="payNumber != null">
+        pay_number,
+      </if>
+      <if test="totleNumber != null">
+        totle_number,
+      </if>
+      <if test="bdate != null">
+        bdate,
+      </if>
+      <if test="jname != null">
+        jname,
+      </if>
+      <if test="jsex != null">
+        jsex,
+      </if>
+      <if test="jdate != null">
+        jdate,
+      </if>
+      <if test="jcard != null">
+        jcard,
+      </if>
+      <if test="profession != null">
+        profession,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="bmoney != null">
+        bmoney,
+      </if>
+      <if test="creditCard != null">
+        credit_card,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="appTime != null">
+        app_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bid != null">
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null">
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="payNumber != null">
+        #{payNumber,jdbcType=INTEGER},
+      </if>
+      <if test="totleNumber != null">
+        #{totleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bdate != null">
+        #{bdate,jdbcType=DATE},
+      </if>
+      <if test="jname != null">
+        #{jname,jdbcType=VARCHAR},
+      </if>
+      <if test="jsex != null">
+        #{jsex,jdbcType=VARCHAR},
+      </if>
+      <if test="jdate != null">
+        #{jdate,jdbcType=DATE},
+      </if>
+      <if test="jcard != null">
+        #{jcard,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null">
+        #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="bmoney != null">
+        #{bmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="creditCard != null">
+        #{creditCard,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="appTime != null">
+        #{appTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.Borrow">
+    update borrow
+    <set>
+      <if test="uid != null">
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="payNumber != null">
+        pay_number = #{payNumber,jdbcType=INTEGER},
+      </if>
+      <if test="totleNumber != null">
+        totle_number = #{totleNumber,jdbcType=INTEGER},
+      </if>
+      <if test="bdate != null">
+        bdate = #{bdate,jdbcType=DATE},
+      </if>
+      <if test="jname != null">
+        jname = #{jname,jdbcType=VARCHAR},
+      </if>
+      <if test="jsex != null">
+        jsex = #{jsex,jdbcType=VARCHAR},
+      </if>
+      <if test="jdate != null">
+        jdate = #{jdate,jdbcType=DATE},
+      </if>
+      <if test="jcard != null">
+        jcard = #{jcard,jdbcType=VARCHAR},
+      </if>
+      <if test="profession != null">
+        profession = #{profession,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="bmoney != null">
+        bmoney = #{bmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="creditCard != null">
+        credit_card = #{creditCard,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="appTime != null">
+        app_time = #{appTime,jdbcType=DATE},
+      </if>
+    </set>
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.Borrow">
+    update borrow
+    set uid = #{uid,jdbcType=INTEGER},
+      pid = #{pid,jdbcType=INTEGER},
+      pay_number = #{payNumber,jdbcType=INTEGER},
+      totle_number = #{totleNumber,jdbcType=INTEGER},
+      bdate = #{bdate,jdbcType=DATE},
+      jname = #{jname,jdbcType=VARCHAR},
+      jsex = #{jsex,jdbcType=VARCHAR},
+      jdate = #{jdate,jdbcType=DATE},
+      jcard = #{jcard,jdbcType=VARCHAR},
+      profession = #{profession,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      bmoney = #{bmoney,jdbcType=DOUBLE},
+      credit_card = #{creditCard,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      app_time = #{appTime,jdbcType=DATE}
+    where bid = #{bid,jdbcType=INTEGER}
+  </update>
+</mapper>

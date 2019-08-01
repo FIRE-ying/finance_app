@@ -42,7 +42,7 @@
         </javaClientGenerator>
 
         <!--连接数据库-->
-        <table tableName="user" enableCountByExample="false"
+        <table tableName="borrow" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
