@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qf.mapper.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.qf.pojo.Product">
+    <id column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="drate" jdbcType="DOUBLE" property="drate" />
+    <result column="monrate" jdbcType="DOUBLE" property="monrate" />
+    <result column="yrate" jdbcType="DOUBLE" property="yrate" />
+    <result column="overrate" jdbcType="DOUBLE" property="overrate" />
+    <result column="loan_amout" jdbcType="VARCHAR" property="loanAmout" />
+    <result column="pay_date" jdbcType="VARCHAR" property="payDate" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    pid, drate, monrate, yrate, overrate, loan_amout, pay_date, cid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where pid = #{pid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product
+    where pid = #{pid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.qf.pojo.Product">
+    insert into product (pid, drate, monrate, 
+      yrate, overrate, loan_amout, 
+      pay_date, cid)
+    values (#{pid,jdbcType=INTEGER}, #{drate,jdbcType=DOUBLE}, #{monrate,jdbcType=DOUBLE}, 
+      #{yrate,jdbcType=DOUBLE}, #{overrate,jdbcType=DOUBLE}, #{loanAmout,jdbcType=VARCHAR}, 
+      #{payDate,jdbcType=VARCHAR}, #{cid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qf.pojo.Product">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="drate != null">
+        drate,
+      </if>
+      <if test="monrate != null">
+        monrate,
+      </if>
+      <if test="yrate != null">
+        yrate,
+      </if>
+      <if test="overrate != null">
+        overrate,
+      </if>
+      <if test="loanAmout != null">
+        loan_amout,
+      </if>
+      <if test="payDate != null">
+        pay_date,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="drate != null">
+        #{drate,jdbcType=DOUBLE},
+      </if>
+      <if test="monrate != null">
+        #{monrate,jdbcType=DOUBLE},
+      </if>
+      <if test="yrate != null">
+        #{yrate,jdbcType=DOUBLE},
+      </if>
+      <if test="overrate != null">
+        #{overrate,jdbcType=DOUBLE},
+      </if>
+      <if test="loanAmout != null">
+        #{loanAmout,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null">
+        #{payDate,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.Product">
+    update product
+    <set>
+      <if test="drate != null">
+        drate = #{drate,jdbcType=DOUBLE},
+      </if>
+      <if test="monrate != null">
+        monrate = #{monrate,jdbcType=DOUBLE},
+      </if>
+      <if test="yrate != null">
+        yrate = #{yrate,jdbcType=DOUBLE},
+      </if>
+      <if test="overrate != null">
+        overrate = #{overrate,jdbcType=DOUBLE},
+      </if>
+      <if test="loanAmout != null">
+        loan_amout = #{loanAmout,jdbcType=VARCHAR},
+      </if>
+      <if test="payDate != null">
+        pay_date = #{payDate,jdbcType=VARCHAR},
+      </if>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.Product">
+    update product
+    set drate = #{drate,jdbcType=DOUBLE},
+      monrate = #{monrate,jdbcType=DOUBLE},
+      yrate = #{yrate,jdbcType=DOUBLE},
+      overrate = #{overrate,jdbcType=DOUBLE},
+      loan_amout = #{loanAmout,jdbcType=VARCHAR},
+      pay_date = #{payDate,jdbcType=VARCHAR},
+      cid = #{cid,jdbcType=INTEGER}
+    where pid = #{pid,jdbcType=INTEGER}
+  </update>
+</mapper>
