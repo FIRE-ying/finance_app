@@ -1,5 +1,8 @@
 package com.qf.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Borrow {
@@ -12,7 +15,7 @@ public class Borrow {
     private Integer payNumber;
 
     private Integer totleNumber;
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date bdate;
 
     private String jname;
@@ -32,7 +35,7 @@ public class Borrow {
     private String creditCard;
 
     private Integer status;
-
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date appTime;
 
     public Integer getBid() {
