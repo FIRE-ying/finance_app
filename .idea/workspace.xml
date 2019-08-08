@@ -174,7 +174,7 @@
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../maven/apache-maven-3.3.3" />
+        <option name="mavenHome" value="E:/maven/apache-maven-3.3.3" />
         <option name="userSettingsFile" value="D:\java\maven\apache-maven-3.3.3\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
@@ -260,7 +260,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.qf.test" />
       <option name="MAIN_CLASS_NAME" value="com.qf.test.Test" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -322,11 +321,11 @@
         <option name="BASE_DIRECTORY_NAME" value="Unnamed_Finance_APP" />
         <option name="HTTP_PORT" value="8080" />
       </server-settings>
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
+      <predefined_log_file id="Tomcat" enabled="true" />
+      <predefined_log_file id="Tomcat Catalina" enabled="true" />
+      <predefined_log_file id="Tomcat Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
+      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="51132" />
       </RunnerSettings>
@@ -416,10 +415,10 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.Test" />
-      <item itemvalue="JUnit.Test.test" />
       <item itemvalue="Maven.my" />
       <item itemvalue="Tomcat Server.Tomcat " />
+      <item itemvalue="JUnit.Test" />
+      <item itemvalue="JUnit.Test.test" />
     </list>
     <recent_temporary>
       <list>
