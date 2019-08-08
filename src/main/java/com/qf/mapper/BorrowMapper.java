@@ -20,4 +20,9 @@ public interface BorrowMapper {
     int updateByPrimaryKeySelective(Borrow record);
 
     int updateByPrimaryKey(Borrow record);
+
+    List<Borrow>  findbyuid(String uid);
+
+    int updateborrowbybid(Integer bid);
+
 }

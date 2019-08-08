@@ -92,19 +92,8 @@
             <version>${springversion}</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${springversion}</version>
-        </dependency>
 
-        <!-- 引用c3p0 依赖 start
-        <dependency>
-            <groupId>com.mchange</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.2.1</version>
-        </dependency>
-         -->
+
         <!-- 引用插件依赖：MyBatis整合Spring,如果mybatis版本在3.4及以上版本
            mybatis-spring的版本要在1.3以上	  -->
         <dependency>
@@ -180,6 +169,15 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.58</version>
         </dependency>
+
+    <!--    &lt;!&ndash;时间日期新特性和mybatis整合&ndash;&gt;
+         <dependency>  
+            <groupId>org.mybatis</groupId>  
+            <artifactId>mybatis-typehandlers-jsr310</artifactId>  
+            <version>1.0.1</version>  
+            </dependency> -->
+
+
     </dependencies>
 
 
