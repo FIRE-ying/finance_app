@@ -1,8 +1,10 @@
 package com.qf.service.impl;
 
 import com.qf.service.SmsService;
-import com.yunpian.sdk.model.*;
-import org.springframework.stereotype.Service;
+import com.yunpian.sdk.YunpianClient;
+import com.yunpian.sdk.model.Result;
+import com.yunpian.sdk.model.SmsSingleSend;
+import org.springframework.stereotype.Component;
 
 import java.util.Map;
 import java.util.Random;
@@ -16,8 +18,10 @@ import java.util.Random;
  * @date Dec 5, 2016 12:33:49 PM
  * @since 1.2.0
  */
-@Service
+@Component
 public class TestSmsApi extends TestYunpianClient implements SmsService {
+  		 YunpianClient clnt=new YunpianClient(TestYunpianClient.TESTKEY,
+            TestYunpianClient.class.getResourceAsStream("/yunpian_online.properties")).init();
 
 
 	public int single_sendTest(String phone) {
@@ -33,6 +37,7 @@ public class TestSmsApi extends TestYunpianClient implements SmsService {
 		Result<SmsSingleSend> r = clnt.sms().single_send(param);//{"code":2,"msg":"请求参数格式错误","detail":"参数 apikey 格式不正确，apikey:不能为空"}
 
 		System.out.println(r);
+		clnt.close();
 		return num;
 	}
 

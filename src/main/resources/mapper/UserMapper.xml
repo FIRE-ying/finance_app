@@ -14,6 +14,12 @@
     <result column="spass" jdbcType="VARCHAR" property="spass" />
     <result column="logintime" jdbcType="DATE" property="logintime" />
   </resultMap>
+
+  <select id="selectuser" resultMap="BaseResultMap">
+    select * from user where phone=#{phone}
+  </select>
+
+
   <sql id="Base_Column_List">
     userid, realname, password, phone, myimg, idcaid, username, profession, address, 
     spass, logintime
