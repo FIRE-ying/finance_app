@@ -44,6 +44,7 @@ public class BorrowController {
         map.put("msg","成功");
         map.put("data",num);
         System.out.println(num);
+        System.out.println(num);
         return map;
     }
 
@@ -52,7 +53,8 @@ public class BorrowController {
         session.setAttribute("num",num);
 
         return "ok";
-    }*/
+    }
+    */
 
     /**
      * 验证码登陆
