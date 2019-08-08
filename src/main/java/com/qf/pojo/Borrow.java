@@ -3,6 +3,7 @@ package com.qf.pojo;
 import com.alibaba.fastjson.annotation.JSONField;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Borrow {
@@ -165,4 +166,5 @@ public class Borrow {
     public void setAppTime(Date appTime) {
         this.appTime = appTime;
     }
+
 }

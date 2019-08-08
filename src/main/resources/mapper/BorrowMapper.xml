@@ -25,6 +25,16 @@
     select * from borrow
   </select>
 
+  <!--更新借款表的还款期数-->
+  <update id="updateborrowbybid" parameterType="int">
+    update borrow set pay_number=pay_number+1 where bid=#{bid}
+  </update>
+
+  <!--根据用户的id查询用户的借款信息-->
+  <select id="findbyuid" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" ></include>
+    from borrow where uid=#{uid}
+  </select>
 
 
   <sql id="Base_Column_List">
