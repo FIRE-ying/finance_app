@@ -11,6 +11,7 @@ public interface BorrowMapper {
 
     int deleteByPrimaryKey(Integer bid);
 
+    List<Borrow> findByStatus(int uid, int status);
     int insert(Borrow record);
 
     int insertSelective(Borrow record);

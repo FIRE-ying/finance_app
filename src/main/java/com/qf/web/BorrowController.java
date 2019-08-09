@@ -1,18 +1,21 @@
 package com.qf.web;
 
+import com.qf.common.Product;
 import com.qf.pojo.Borrow;
 import com.qf.pojo.User;
 import com.qf.service.BorrowMapperService;
 import com.qf.service.SmsService;
 import com.qf.service.UserService;
+import com.qf.utils.DataView;
+import com.qf.vo.BorrowVO;
+import com.qf.vo.HistoryVO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -118,6 +121,46 @@ public class BorrowController {
         map.put("msg","成功");
         map.put("data",null);
         return map;
+    }
+
+    /**
+     * 支付确认
+     * @param bid
+     * @param spass    手势密码
+     * @return
+     */
+    @PostMapping("/repayment/paymoney")
+    public DataView payMoney(int bid, String spass){
+        DataView dataView = null;
+        Borrow borrow = borrowMapperService.selectByPrimaryKey(bid);
+        String s = userService.selectByPrimaryKey(borrow.getUid()).getSpass();
+        if (spass.equals(s)){
+            int i = borrowMapperService.repayment(bid);
+            if (i>0){
+                BorrowVO borrowVO = new BorrowVO();
+                Date bdate = borrow.getBdate();
+                bdate.setMonth(bdate.getMonth()+1);
+                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+                String format = simpleDateFormat.format(bdate);
+                borrowVO.setDate(format);
+                borrowVO.setTotalmoney(borrow.getBmoney()*Math.pow(borrow.getTotleNumber(), Product.monrate));
+                dataView = new DataView(0,"成功",borrowVO);
+            }else {
+                dataView = new DataView(1,"失败",null);
+            }
+        }
+        return dataView;
+    }
+
+    /**
+     * 根据状态查历史交易记录
+     * @param uid    当前用户id
+     * @param status    当前还款状态
+     * @return
+     */
+    @PostMapping("/repayment/history")
+    public HistoryVO findHistory(@Param("uid") int uid, @Param("status") int status){
+        return borrowMapperService.findByStatus(uid, status);
     }
 
 }
