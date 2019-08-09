@@ -36,6 +36,11 @@
     from borrow where uid=#{uid}
   </select>
 
+  <!--根据还款状态查询历史交易记录-->
+  <select id="findByStatus" resultMap="BaseResultMap">
+    select * from borrow where uid = #{0} and status = #{1}
+  </select>
+
 
   <sql id="Base_Column_List">
     bid, uid, pid, pay_number, totle_number, bdate, jname, jsex, jdate, jcard, profession, 

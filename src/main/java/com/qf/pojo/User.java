@@ -112,4 +112,6 @@ public class User {
     public void setLogintime(Date logintime) {
         this.logintime = logintime;
     }
+
+
 }

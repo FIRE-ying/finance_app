@@ -4,6 +4,7 @@ import com.qf.mapper.UserMapper;
 import com.qf.pojo.User;
 import com.qf.service.UserService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -20,5 +21,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public User selectuser(String phone) {
         return userMapper.selectuser(phone);
+    }
+
+    @Override
+    @Transactional
+    public int insertUser(User user) {
+        return userMapper.insertSelective(user);
+    }
+
+    @Override
+    public User selectByPrimaryKey(Integer userid) {
+        return userMapper.selectByPrimaryKey(userid);
     }
 }

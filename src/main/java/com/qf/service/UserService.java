@@ -8,4 +8,7 @@ import com.qf.pojo.User;
 
 public interface UserService {
     User selectuser(String phone);
+    int insertUser(User user);
+
+    User selectByPrimaryKey(Integer userid);
 }
