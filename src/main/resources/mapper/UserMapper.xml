@@ -13,7 +13,15 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="spass" jdbcType="VARCHAR" property="spass" />
     <result column="logintime" jdbcType="DATE" property="logintime" />
+    <association property="role" javaType="com.qf.pojo.Role">
+      <id column="rid" jdbcType="INTEGER" property="rid" />
+      <result column="rname" jdbcType="VARCHAR" property="rname" />
+    </association>
   </resultMap>
+
+  <select id="selectByusernameOrPhone" resultMap="BaseResultMap">
+    select  * from user ,role where `user`.rid=role.rid and `user`.username=#{loginName} or phone=#{loginName}
+  </select>
 
   <select id="selectuser" resultMap="BaseResultMap">
     select * from user where phone=#{phone}

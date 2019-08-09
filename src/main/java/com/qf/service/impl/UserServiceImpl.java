@@ -21,4 +21,21 @@ public class UserServiceImpl implements UserService {
     public User selectuser(String phone) {
         return userMapper.selectuser(phone);
     }
+
+    @Override
+    public User selectByUserNameOrPhone(String loginName) {
+        return userMapper.selectByusernameOrPhone(loginName);
+    }
+
+    @Override
+    public User selectByLoginName(String userName, String password) {
+
+        User user = userMapper.selectByusernameOrPhone(userName);
+        if (user != null) {
+            if (password.equals(user.getPassword())){
+                return user;
+            }
+        }
+        return null;
+    }
 }

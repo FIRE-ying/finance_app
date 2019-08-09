@@ -8,4 +8,10 @@ import com.qf.pojo.User;
 
 public interface UserService {
     User selectuser(String phone);
+
+    User selectByUserNameOrPhone(String loginName);
+
+    User selectByLoginName(String userName,String password);
+
+
 }

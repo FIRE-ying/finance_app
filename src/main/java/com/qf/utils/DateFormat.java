@@ -26,10 +26,11 @@ public class DateFormat {
         return localDate;
     }
 
-   /* ZoneId zone = ZoneId.systemDefault();
-    Instant instant = localDateTime.atZone(zone).toInstant();
-    java.util.Date date = Date.from(instant);*/
-
+    /**
+     * localdate---->date
+     * @param localDate
+     * @return
+     */
    public static Date localdateformdate(LocalDate localDate){
        ZoneId zone = ZoneId.systemDefault();
        Instant instant = localDate.atStartOfDay().atZone(zone).toInstant();

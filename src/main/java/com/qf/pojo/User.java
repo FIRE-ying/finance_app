@@ -25,6 +25,16 @@ public class User {
 
     private Date logintime;
 
+    private Role role;
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public Integer getUserid() {
         return userid;
     }
