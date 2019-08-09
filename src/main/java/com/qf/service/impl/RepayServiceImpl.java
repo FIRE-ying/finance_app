@@ -78,16 +78,21 @@ public class RepayServiceImpl implements RepayService {
         Integer uid = borrow.getUid();
         User user = userMapper.selectByPrimaryKey(uid);
         String spass = user.getSpass();
+        System.out.println("spass==="+spass);
         if (password.equals(spass)){
             borrowMapper.updateborrowbybid(bid);
             Date appTime = borrow.getAppTime();
             //已还期数
             Integer payNumber = borrow.getPayNumber()+1;
-            LocalDate localDate2 = DateFormat.getLocalDate2(DateFormat.fateformat(appTime), payNumber);
-            DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-            //下次还款时间
-            String format = pattern.format(localDate2);
-           map.put("date",format);
+            if (payNumber<borrow.getTotleNumber()){
+                LocalDate localDate2 = DateFormat.getLocalDate2(DateFormat.fateformat(appTime), payNumber);
+                DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                //下次还款时间
+                String format = pattern.format(localDate2);
+                map.put("date",format);
+            }else {
+                map.put("data","已结清");
+            }
         }
         return map;
     }

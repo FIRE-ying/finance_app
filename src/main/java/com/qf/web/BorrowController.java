@@ -123,12 +123,12 @@ public class BorrowController {
         return map;
     }
 
-    /**
+  /*  *//**
      * 支付确认
      * @param bid
      * @param spass    手势密码
      * @return
-     */
+     *//*
     @PostMapping("/repayment/paymoney")
     public DataView payMoney(int bid, String spass){
         DataView dataView = null;
@@ -151,7 +151,7 @@ public class BorrowController {
         }
         return dataView;
     }
-
+*/
     /**
      * 根据状态查历史交易记录
      * @param uid    当前用户id
