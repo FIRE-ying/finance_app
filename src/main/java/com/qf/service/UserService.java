@@ -14,4 +14,9 @@ public interface UserService {
     User selectByLoginName(String userName,String password);
 
 
+    
+    
+  public int updateuser(int userid,String newpass);
+
+    public User findbyid(int userid);
 }
