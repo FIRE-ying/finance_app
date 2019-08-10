@@ -18,4 +18,9 @@ public interface UserMapper {
     User selectuser(String phone);
 
     User selectByusernameOrPhone(String loginName);
+    
+    
+     public int updateuser(int userid,String newpass);
+
+    public User findbyid(int userid);
 }
