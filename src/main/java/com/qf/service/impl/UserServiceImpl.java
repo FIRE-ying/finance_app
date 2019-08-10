@@ -38,4 +38,30 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+    
+    
+    
+     @Override
+    public int updateuser(int userid,String newpass) {
+        User user=new User();
+        user.setUserid(userid);
+        user.setPassword(newpass);
+        return userMapper.updateuser(user);
+    }
+
+    @Override
+    public User findbyid(int userid) {
+        return userMapper.findbyid(userid);
+    }
+
+    @Override
+    public int insertuser(User user) {
+        return userMapper.insertSelective(user);
+
+    }
+
+    @Override
+    public int spass(User user) {
+        return userMapper.updateByPrimaryKeySelective(user);
+    }
 }
