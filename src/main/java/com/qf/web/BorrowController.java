@@ -162,5 +162,31 @@ public class BorrowController {
     public HistoryVO findHistory(@Param("uid") int uid, @Param("status") int status){
         return borrowMapperService.findByStatus(uid, status);
     }
+     /**
+     * 进度查询
+     */
+    @RequestMapping(method = RequestMethod.POST,value ="/finance/schedule")
+    public Map schedule(String uid){
+
+        List<Borrow> list = borrowMapperService.selectSchedule(uid);
+        Map map=new HashMap();
+        map.put("code",0);
+        map.put("msg","成功");
+        map.put("data",list);
+        return map;
+    }
+
+    /**
+     * 查询未审核用户信息
+     */
+    @RequestMapping(method = RequestMethod.POST,value ="/Administrator/audit")
+    public Map audit(){
+        List<Borrow> list = borrowMapperService.selectBorrow();
+        Map map=new HashMap();
+        map.put("code",0);
+        map.put("msg","成功");
+        map.put("data",list);
+        return map;
+    }
 
 }
