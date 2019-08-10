@@ -40,6 +40,12 @@
   <select id="findByStatus" resultMap="BaseResultMap">
     select * from borrow where uid = #{0} and status = #{1}
   </select>
+  <select id="selectBorrow" resultMap="BaseResultMap">
+    select * from borrow where status = 1
+  </select>
+  <select id="selectSchedule" resultMap="BaseResultMap">
+    select * from borrow where uid=#{uid}
+  </select>
 
 
   <sql id="Base_Column_List">
