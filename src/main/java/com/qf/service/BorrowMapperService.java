@@ -9,6 +9,8 @@ public interface BorrowMapperService {
 
 
     public List<Borrow> findallborrow();
+    public List<Borrow> selectBorrow();
+    public  List<Borrow> selectSchedule(String uid);
 
     public int insertSelective(Borrow record);
 
