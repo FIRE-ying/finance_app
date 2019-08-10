@@ -61,4 +61,55 @@ public class UserController {
 
 
 
+    
+    
+    
+     @RequestMapping(method = RequestMethod.POST,value = "finance/confirmusers")
+    public Map confirmusers(int userid,String phone) {
+        User user = userService.findbyid(userid);
+        System.err.println(user.getPhone());
+        System.err.println(phone);
+        Map map=new HashMap();
+        if (phone.equals(user.getPhone())){
+            map.put("code",0);
+            map.put("msg","成功");
+            map.put("data",user);
+        }else{
+            map.put("code",1);
+            map.put("msg","失败");
+            map.put("data",null);
+        }
+        return map;
+    }
+    @RequestMapping("finance/updatepass")
+    public Map updatepass(int userid,String newpass){
+        User user = userService.findbyid(userid);
+        int i = userService.updateuser(userid,newpass);
+        Map map=new HashMap();
+        if (i>0){
+            map.put("code",0);
+            map.put("msg","成功");
+            map.put("data",user);
+        }else {
+            map.put("code",1);
+            map.put("msg","失败");
+            map.put("data",null);
+        }
+        return map;
+    }
+    @RequestMapping("/finance/spass")
+    public Map spass(int userid,String spass){
+        User user = userService.findbyid(userid);
+        Map map=new HashMap();
+        if (user.getSpass().equals(spass)){
+            map.put("code",0);
+            map.put("msg","成功");
+            map.put("data",user);
+        }else {
+            map.put("code",1);
+            map.put("msg","失败");
+            map.put("data",null);
+        }
+        return map;
+    }
 }
