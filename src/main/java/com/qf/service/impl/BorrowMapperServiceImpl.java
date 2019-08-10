@@ -90,6 +90,15 @@ public class BorrowMapperServiceImpl implements BorrowMapperService {
         }
         return historyVO;
     }
+     @Override
+    public List<Borrow> selectBorrow() {
+        return borrowMapper.selectBorrow();
+    }
+
+    @Override
+    public List<Borrow> selectSchedule(String uid) {
+        return borrowMapper.selectSchedule(uid);
+    }
     @Override
     @Transactional
     public int insertSelective(Borrow record) {
