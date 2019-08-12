@@ -19,6 +19,16 @@
     </association>
   </resultMap>
 
+  <select id="findbyid" resultMap="BaseResultMap">
+  select * from user where userid=#{useeid}
+</select>
+
+<update id="updateuser" parameterType="com.qf.pojo.User">
+  update user set password=#{password} where userid=#{userid}
+</update>
+
+  
+  
   <select id="selectByusernameOrPhone" resultMap="BaseResultMap">
     select  * from user ,role where `user`.rid=role.rid and `user`.username=#{loginName} or phone=#{loginName}
   </select>
