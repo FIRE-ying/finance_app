@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
+import java.util.Calendar;
 
 /**
  * 生活很好，记得微笑🙂
@@ -26,4 +27,9 @@ public class Test {
         int i = userMapper.insert(user);
         System.out.println(i);
     }
+
+
+
+
+
 }

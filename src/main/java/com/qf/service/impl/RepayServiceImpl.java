@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -61,8 +62,8 @@ public class RepayServiceImpl implements RepayService {
             data.setTotlemoney(v1);
             //还款日期
             Date appTime = borrow.getAppTime();
-            LocalDate localDate = DateFormat.getLocalDate2(DateFormat.fateformat(appTime),payNumber);
-            data.setDate(DateFormat.localdateformdate(localDate));
+            Date date = DateFormat.dayAndMonth(appTime, payNumber);
+               data.setDate(date);
             System.out.println(data);
             datalist.add(data);
         }
@@ -85,10 +86,10 @@ public class RepayServiceImpl implements RepayService {
             //已还期数
             Integer payNumber = borrow.getPayNumber()+1;
             if (payNumber<borrow.getTotleNumber()){
-                LocalDate localDate2 = DateFormat.getLocalDate2(DateFormat.fateformat(appTime), payNumber);
-                DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                Date date = DateFormat.dayAndMonth(appTime, payNumber + 1);
+                SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy/MM/dd  HH:mm:ss");
                 //下次还款时间
-                String format = pattern.format(localDate2);
+                String format = simpleDateFormat.format(date);
                 map.put("date",format);
             }else {
                 map.put("data","已结清");

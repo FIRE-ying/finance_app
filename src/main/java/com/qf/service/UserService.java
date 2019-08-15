@@ -15,8 +15,8 @@ public interface UserService {
 
 
     
-    
-  public int updateuser(int userid,String newpass);
+     public int updateuser(int userid,String newpass);
 
     public User findbyid(int userid);
+
 }

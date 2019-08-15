@@ -48,7 +48,7 @@ public class UserController {
             map1.put("password",user.getPassword());
             map1.put("spass",user.getSpass());
             map1.put("myimg",user.getMyimg());
-            map1.put("logintime", DateFormat.localdateformdate(LocalDate.now()));
+           // map1.put("logintime", DateFormat.localdateformdate(LocalDate.now()));
             map.put("data",map1);
             return map;
         }else {

@@ -3,6 +3,7 @@ package com.qf.utils;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -13,72 +14,45 @@ import java.util.Date;
  */
 public class DateFormat {
 
-    /**
-     * date----->localdate
+    /***
+     * date转calendar
      * @param date
      * @return
      */
-    public  static LocalDate  fateformat(Date date){
-        Instant instant = date.toInstant();
-        ZoneId zoneId = ZoneId.systemDefault();
-        LocalDate localDate = instant.atZone(zoneId).toLocalDate();
-        System.out.println("locadate--->"+localDate);
-        return localDate;
+    public static Calendar dateToCalendar(Date date){
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        System.out.println("caldendar==>"+calendar);
+        return calendar;
     }
 
     /**
-     * localdate---->date
-     * @param localDate
+     * date转caldendar
+     * @param calendar
      * @return
      */
-   public static Date localdateformdate(LocalDate localDate){
-       ZoneId zone = ZoneId.systemDefault();
-       Instant instant = localDate.atStartOfDay().atZone(zone).toInstant();
-        Date date = Date.from(instant);
-        return date;
-   }
+    public static  Date calendarToDate(Calendar calendar){
+        return calendar.getTime();
+    }
 
 
     /**
-     *逾期时间
-     * @param localDate 上次还款日期
+     *
+     * @param date
+     * @param payNumber  已还的期数
      * @return
      */
-    public static int getDays(LocalDate localDate){
-        //现在日期
-        LocalDate date=LocalDate.now();
-        int days = localDate.until(date).getDays();
-        System.out.println("days---->");
-        return days;
-    }
+    public static Date dayAndMonth(Date date,int payNumber){
+        Calendar calendar = dateToCalendar(date);
+        int i = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        System.out.println("借款的日期:"+i);
+        System.out.println("每月还款的日期+=====>"+day);
+        calendar.add(Calendar.MONTH,payNumber+1);
+        Date date1 = calendarToDate(calendar);
+        System.out.println("下次还款时间:"+date1);
+        return date1;
 
-    /**
-     * 还款日期  ---->指定每个月的那天还款
-     * @param localDate 审核时间
-     * @param
-     * @return
-     */
-    public static  LocalDate getLocalDate(LocalDate  localDate){
-        int day = localDate.getDayOfMonth();
-        return LocalDate.now().withDayOfMonth(day);
-    }
-
-    /***
-     * 根据审核时间和已还的期数计算下次还款的时间
-     * @param localDate
-     * @param number 已还期数
-     * @return
-     */
-    public static  LocalDate getLocalDate2(LocalDate  localDate,int number){
-        int moneth = localDate.getMonthValue() + number + 1;
-        LocalDate date2=null;
-        if (moneth<12){
-           date2 = LocalDate.of(localDate.getYear(),moneth , localDate.getDayOfMonth());
-        }else {
-            date2 = LocalDate.of(localDate.getYear(),moneth-12 , localDate.getDayOfMonth());
-        }
-
-        return date2;
     }
 
 
